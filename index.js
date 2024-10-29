@@ -19,9 +19,7 @@ app.use("/room", roomRoute);
 app.use("/user", userRoute);
 
 mongoose
-    .connect(
-        "mongodb+srv://ngomongo_admin:EStVIVhsySLYM7vu@ngomongodb.oeycx.mongodb.net/RuangChat?retryWrites=true&w=majority&appName=NgomongoDB"
-    )
+    .connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("Connected to mongoDB");
         app.listen(port, () => {
