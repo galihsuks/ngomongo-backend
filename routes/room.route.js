@@ -6,6 +6,7 @@ const {
     joinRoom,
     exitRoom,
     getRoom,
+    updateRoom,
 } = require("../controllers/room.controller.js");
 const {
     getChats,
@@ -17,6 +18,7 @@ const authenticateToken = require("../routes/jwt.route.js");
 router.get("/", authenticateToken, getRooms);
 router.get("/getroom/:id", authenticateToken, getRoom);
 router.post("/", authenticateToken, addRoom);
+router.put("/updateroom/:id", authenticateToken, updateRoom);
 router.get("/join/:id", authenticateToken, joinRoom); //id room
 router.get("/exit/:id", authenticateToken, exitRoom); //id room
 router.get("/chat/:id", authenticateToken, getChats); //id room

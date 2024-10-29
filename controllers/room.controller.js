@@ -83,6 +83,19 @@ const exitRoom = async (req, res) => {
         res.status(500).json({ pesan: error.message });
     }
 };
+const updateRoom = async (req, res) => {
+    try {
+        let data = req.body;
+        const room = await Room.findByIdAndUpdate(req.params.id, data);
+        if (!room) {
+            res.status(404).json({ pesan: "Room tidak ditemukan" });
+        }
+        const updatedRoom = await Room.findById(req.params.id);
+        res.status(200).json(updatedRoom);
+    } catch (error) {
+        res.status(500).json({ pesan: error.message });
+    }
+};
 
 module.exports = {
     getRooms,
@@ -90,4 +103,5 @@ module.exports = {
     addRoom,
     joinRoom,
     exitRoom,
+    updateRoom,
 };
