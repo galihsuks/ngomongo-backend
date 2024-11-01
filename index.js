@@ -22,7 +22,7 @@ mongoose
     .connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("Connected to mongoDB");
-        app.listen(port, () => {
+        app.listen(port, "0.0.0.0", () => {
             console.log(`Backend Ngomongo app listening on port ${port}`);
         });
     })
