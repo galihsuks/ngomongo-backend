@@ -10,13 +10,13 @@ const userRoute = require("./routes/user.route.js");
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/backend/", (req, res) => {
     res.send("API Ngomongo v1");
 });
 
 // routes
-app.use("/room", roomRoute);
-app.use("/user", userRoute);
+app.use("/backend/room", roomRoute);
+app.use("/backend/user", userRoute);
 
 mongoose
     .connect(process.env.MONGODB_URI)
